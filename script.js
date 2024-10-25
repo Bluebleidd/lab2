@@ -3,6 +3,7 @@
   const cw1 = document.getElementById('cw1')
   const cw2 = document.getElementById('cw2')
   const cw3 = document.getElementById('cw3')
+  const cw4 = document.getElementById("cw4")
   const answer = document.getElementById('answer')
 
   example.addEventListener("click", function () {
@@ -62,6 +63,27 @@
       console.log(array);
       answer.innerHTML = JSON.stringify(array);
     });
+  })
+
+  cw4.addEventListener("click", function () {
+    answer.innerHTML = "Processing…";
+
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({
+        title: "Nowy Post",
+        body: "Tekst nowego posta",
+        userId: 1
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        answer.innerHTML = `Dodano nowy post o ID = ${data.id}`;
+      })
   })
 
 })();
