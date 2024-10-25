@@ -56,7 +56,12 @@
   })
 
   cw3.addEventListener("click", function () {
-    //TODO
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then((response) => response.json())
+    .then((array) => {
+      console.log(array);
+      answer.innerHTML = JSON.stringify(array);
+    });
   })
 
 })();
