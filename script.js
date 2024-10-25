@@ -15,7 +15,22 @@
   })
 
   cw1.addEventListener("click", function () {
-    //TODO
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((array) => {
+      console.log(array);
+      for (let i = 0; i < array.length; i++) {
+        answer.innerHTML +=
+          JSON.stringify(array[i].userId) +
+          "<br>" +
+          JSON.stringify(array[i].id) +
+          "<br>" +
+          JSON.stringify(array[i].title) +
+          "<br>" +
+          JSON.stringify(array[i].body) +
+          "<br>";
+      }
+    });
   })
 
   cw2.addEventListener("click", function () {
